@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwqatfxc8m2a7"]
+
+[ext_resource type="PackedScene" uid="uid://b5x2vn8i0kqvs" path="res://FPS CONTROLLER/Fps_character3D.tscn" id="1_hccjg"]
+[ext_resource type="PackedScene" uid="uid://cl4nxfala4iic" path="res://interactable.tscn" id="2_aknjg"]
+
+[node name="MAIN_SCENE" type="Node3D"]
+
+[node name="LIGHT3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.963854, 0.191428, 0.185312, 0, -0.695536, 0.718491, 0.266431, -0.69252, -0.670396, 0, 6.37945, 0)
+shadow_enabled = true
+
+[node name="FLOOR" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.025, 0)
+use_collision = true
+size = Vector3(25, 0.05, 25)
+
+[node name="Wall" type="CSGBox3D" parent="FLOOR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.44912, 2.16503, 0)
+use_collision = true
+size = Vector3(1, 4.30024, 5.03032)
+
+[node name="Fps_character3D" parent="." instance=ExtResource("1_hccjg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 5)
+
+[node name="interactable" parent="." instance=ExtResource("2_aknjg")]

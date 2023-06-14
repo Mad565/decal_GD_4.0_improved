@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://ciylx4m1tfcnt"]
+
+[ext_resource type="Texture2D" uid="uid://cbam3100vu351" path="res://weapon/textures/Material_25_albedo.png" id="1_ytque"]
+[ext_resource type="Texture2D" uid="uid://bboc14ht6n0fs" path="res://weapon/textures/Material_25_normal.png" id="2_sihnp"]
+
+[resource]
+resource_name = "Material_25"
+cull_mode = 2
+albedo_texture = ExtResource("1_ytque")
+roughness = 0.5
+normal_enabled = true
+normal_texture = ExtResource("2_sihnp")

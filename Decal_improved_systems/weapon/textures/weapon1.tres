@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://dvst7a1cl480f"]
+
+[ext_resource type="Texture2D" uid="uid://b6wgm02we7fmu" path="res://weapon/textures/Object026_low__0_albedo.png" id="1_fesf8"]
+[ext_resource type="Texture2D" uid="uid://c23nu84un15e0" path="res://weapon/textures/Object026_low__0_normal.png" id="3_tcoty"]
+
+[resource]
+resource_name = "Object026_low__0"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_fesf8")
+metallic_texture_channel = 2
+roughness = 0.5
+normal_enabled = true
+normal_texture = ExtResource("3_tcoty")

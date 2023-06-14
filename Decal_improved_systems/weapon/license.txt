@@ -1,0 +1,11 @@
+Model Information:
+* title:	Saiga-9mm
+* source:	https://sketchfab.com/3d-models/saiga-9mm-3d031dfeb2ad45beb19e89977225a631
+* author:	rwroclav (https://sketchfab.com/rwroclav)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Saiga-9mm" (https://sketchfab.com/3d-models/saiga-9mm-3d031dfeb2ad45beb19e89977225a631) by rwroclav (https://sketchfab.com/rwroclav) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

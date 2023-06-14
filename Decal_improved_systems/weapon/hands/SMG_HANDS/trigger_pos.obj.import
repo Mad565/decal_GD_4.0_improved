@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b5ova1mjoy17y"
+path="res://.godot/imported/trigger_pos.obj-0660e8c542c92f320cd86527c542cb7b.mesh"
+
+[deps]
+
+files=["res://.godot/imported/trigger_pos.obj-0660e8c542c92f320cd86527c542cb7b.mesh"]
+
+source_file="res://weapon/hands/SMG_HANDS/trigger_pos.obj"
+dest_files=["res://.godot/imported/trigger_pos.obj-0660e8c542c92f320cd86527c542cb7b.mesh", "res://.godot/imported/trigger_pos.obj-0660e8c542c92f320cd86527c542cb7b.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

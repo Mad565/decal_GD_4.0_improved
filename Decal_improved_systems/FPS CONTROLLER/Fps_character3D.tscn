@@ -1,0 +1,128 @@
+[gd_scene load_steps=10 format=3 uid="uid://b5x2vn8i0kqvs"]
+
+[ext_resource type="Script" path="res://FPS CONTROLLER/Fps.gd" id="1_s5gs8"]
+[ext_resource type="PackedScene" uid="uid://7opnv2q6qk2o" path="res://weapon/weapon.tscn" id="2_vqk05"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6qgcx"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_iw7xu"]
+
+[sub_resource type="Sky" id="Sky_b0e4i"]
+sky_material = SubResource("ProceduralSkyMaterial_iw7xu")
+
+[sub_resource type="Environment" id="Environment_tq8f0"]
+background_mode = 2
+sky = SubResource("Sky_b0e4i")
+ambient_light_source = 3
+reflected_light_source = 2
+tonemap_mode = 2
+tonemap_exposure = 1.5
+tonemap_white = 1.5
+glow_blend_mode = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_nw5bp"]
+line_spacing = 5.325
+font_size = 35
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xiusm"]
+font_color = Color(1, 1, 0, 1)
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iw4wp"]
+size = Vector3(0.2, 0.2, 0.2)
+
+[node name="Fps_character3D" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("1_s5gs8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_6qgcx")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+environment = SubResource("Environment_tq8f0")
+near = 0.001
+
+[node name="GUNRAY" type="RayCast3D" parent="Head/Camera3D"]
+visible = false
+target_position = Vector3(0, 0, -1000)
+
+[node name="hand" type="Node3D" parent="Head/Camera3D"]
+
+[node name="weapon" parent="Head/Camera3D/hand" instance=ExtResource("2_vqk05")]
+transform = Transform3D(-0.4, 0, -6.03983e-08, 0, 0.4, 0, 6.03983e-08, 0, -0.4, 0.033, -0.065, -0.09)
+
+[node name="HUD" type="Control" parent="Head/Camera3D"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="count" type="Label" parent="Head/Camera3D/HUD"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -149.0
+offset_top = -75.0
+offset_right = -26.0
+offset_bottom = -21.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "count"
+label_settings = SubResource("LabelSettings_nw5bp")
+horizontal_alignment = 2
+uppercase = true
+
+[node name="check" type="Label" parent="Head/Camera3D/HUD"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = -63.0
+offset_right = 104.0
+offset_bottom = -40.0
+grow_vertical = 0
+text = "SPRINTING"
+label_settings = SubResource("LabelSettings_xiusm")
+uppercase = true
+
+[node name="OBJ_PICKSYS" type="Node3D" parent="Head/Camera3D"]
+
+[node name="Marker3D" type="Marker3D" parent="Head/Camera3D/OBJ_PICKSYS"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+
+[node name="RayCast3D" type="RayCast3D" parent="Head/Camera3D/OBJ_PICKSYS"]
+target_position = Vector3(0, 0, -5)
+
+[node name="Joint3D" type="Generic6DOFJoint3D" parent="Head/Camera3D/OBJ_PICKSYS"]
+node_a = NodePath("../TO_rot_obj")
+linear_limit_x/enabled = false
+linear_limit_y/enabled = false
+linear_limit_z/enabled = false
+
+[node name="TO_rot_obj" type="StaticBody3D" parent="Head/Camera3D/OBJ_PICKSYS"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+
+[node name="rot_obj_3D" type="CollisionShape3D" parent="Head/Camera3D/OBJ_PICKSYS/TO_rot_obj"]
+shape = SubResource("BoxShape3D_iw4wp")
+disabled = true
+
+[node name="Head_check" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+target_position = Vector3(0, 1, 0)
+
+[node name="Sprint__Timer" type="Timer" parent="."]
+wait_time = 0.6
+
+[connection signal="timeout" from="Sprint__Timer" to="." method="_on_sprint__timer_timeout"]

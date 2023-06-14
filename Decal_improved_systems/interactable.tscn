@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://cl4nxfala4iic"]
+
+[ext_resource type="Texture2D" uid="uid://yuts3s3cmqdc" path="res://icon.svg" id="1_huocx"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_xslx3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a21qv"]
+albedo_texture = ExtResource("1_huocx")
+uv1_scale = Vector3(3, 2, 0)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_j251o"]
+points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5)
+
+[node name="interactable" type="RigidBody3D" groups=["interactable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_xslx3")
+surface_material_override/0 = SubResource("StandardMaterial3D_a21qv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_j251o")
